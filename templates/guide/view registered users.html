@@ -1,0 +1,40 @@
+{% extends 'Guide/guideindex.html' %}
+{% block body %}
+
+<body><form action="/myapp/guide_viewRegisteredUsers_post/" method="post">
+    {% csrf_token %}
+<table width="200" border="1">
+  <tr>
+    <td>
+      <input type="text" name="textfield" id="textfield" required/></td>
+    <td><input type="submit" name="search" id="search" value="Search" class="btn btn-primary"/></td>
+  </tr>
+</table>
+<table class="table table-bordered" border="1">
+  <tr>
+    <th>Sl No</th>
+    <th>Name</th>
+    <th>Photo</th>
+    <th>Contact</th>
+    <th>Address</th>
+{#    <th>&nbsp;</th>#}
+  </tr>
+    {% for i in data %}
+
+
+
+  <tr>
+    <td>{{ forloop.counter }}&nbsp;</td>
+    <td>{{ i.name }}&nbsp;</td>
+    <td><img src="{{ i.photo }}" height="100" width="100">&nbsp;</td>
+    <td>{{ i.phone }}<br>{{ i.email }}&nbsp;</td>
+    <td>{{ i.place }}<br>{{ i.pin }}<br>{{ i.post }}<br>{{ i.district }}<br>{{ i.state }}&nbsp;</td>
+{#    <td><a href="#">chat</a></td>#}
+
+  </tr>
+    {% endfor %}
+</table>
+
+</form>
+</body>
+{% endblock %}

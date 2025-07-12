@@ -1,0 +1,44 @@
+{% extends 'Guide/guideindex.html' %}
+{% block body %}
+
+<body><form action="" method="post" enctype="multipart/form-data">
+<table class="table table-bordered" border="1">
+  <tr>
+    <th>Name</th>
+    <td>
+        {{ data.name }}
+    </td>
+  </tr>
+  <tr>
+    <th>Photo</th>
+    <td>
+<img src="{{ data.photo }}" width="100" height="100">
+    </td>
+  </tr>
+  <tr>
+    <th>Contact</th>
+    <td>{{ data.phoneno }},{{ data.email }}</td>
+  </tr>
+  <tr>
+    <th>Address</th>
+    <td>{{ data.place }},{{ data.pin }},{{ data.post }},{{ data.district }}</td>
+  </tr> <tr>
+    <th>Work Place</th>
+    <td>{{ data.workplace }}</td>
+  </tr> <tr>
+    <th>Qualification</th>
+    <td>{{ data.qualification }}</td>
+  </tr> <tr>
+    <th>Certificate</th>
+    <td><a href="{{ data.certificate }}">Certificate</a></td>
+  </tr>
+</table>
+    <tr>
+
+    <td>
+      <a href="/myapp/edit_get/{{ data.id }}" class="btn btn-primary">EDIT</a></td>
+  </tr>
+
+</form>
+</body>
+{% endblock %}

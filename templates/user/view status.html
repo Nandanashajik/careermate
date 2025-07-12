@@ -1,0 +1,29 @@
+{% extends 'User/userindex.html' %}
+{% block body %}
+
+<body>
+<form action="" method="post">
+<table class="table table-bordered" border="1">
+  <tr>
+      <th>Sl No</th>
+    <th>Date</th>
+    <th>Vacancy</th>
+    <th>Status&nbsp;</th>
+  </tr>
+    {% for i in data %}
+
+
+
+  <tr>
+  <td>{{ forloop.counter }}</td>
+    <td>&nbsp;{{ i.date }}</td>
+    <td>{{ i.VACANCY.JOB }}&nbsp;</td>
+      <td>{{ i.status }}</td>
+{#    <td><a href="#">accept</a></td>#}
+{#    <td><a href="#">reject</a></td>#}
+  </tr>
+    {% endfor %}
+</table>
+</form>
+</body>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'admin/adminindex.html' %}
+{% block body %}
+<body>
+<form action="/myapp/viewApprovedGuide_post/" method="post">
+    {% csrf_token %}
+<table class=" table table-bordered" border="1">
+  <tr>
+    <td>
+      <input type="text" name="textfield" id="textfield" required/></td>
+    <td><input type="submit" name="search" id="search" value="Search" class="btn btn-primary"/></td>
+  </tr>
+</table>
+
+<table class="table table-bordered" border="1">
+ 
+  <tr>
+    <th>SlNo</th>
+    <th>Name</th>
+    <th>Contact</th>
+    <th>Photo</th>
+    <th>Address</th>
+    <th>Work Place</th>
+    <th>Qualification</th>
+    <th>Experience Certificate</th>
+  </tr>
+    {% for i in data %}
+
+
+  <tr>
+    <td>{{ forloop.counter }}&nbsp;</td>
+    <td>{{ i.name }}&nbsp;</td>
+    <td>{{ i.phoneno }}<br>{{ i.email }}&nbsp;</td>
+    <td><img src="{{ i.photo }}" height="=100" width="100"> &nbsp;</td>
+    <td>&nbsp;{{ i.place }}<br>{{ i.pin }}<br>{{ i.post }}<br>{{ i.district }}</td>
+      <td>{{ i.workplace }}</td>
+      <td>{{ i.qualification }}</td>
+      <td><a href="{{ i.certificate }}">Certificate</td>
+{#    <td><a href="#">reject</a></td>#}
+  </tr>
+    {% endfor %}
+
+</table>
+</form>
+</body>
+{% endblock %}

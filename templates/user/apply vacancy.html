@@ -1,0 +1,28 @@
+{% extends 'User/userindex.html' %}
+{% block body %}
+
+<body><form action="/myapp/applyvacancy_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<input type="hidden" name="vid" value="{{ vid }}">
+<table class="table table-bordered" border="1">
+    <tr>
+        <td><b>Put your CV here:</b><label for="filefield"></label>
+              <input type="file" name="filefield" id="filefield"  />
+
+    </td>
+        <td>
+                <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-primary"/>
+            </td>
+
+  </tr>
+{#    <tr>#}
+{#        <td></td>#}
+{#            <td>#}
+{#                <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-primary"/>#}
+{#            </td>#}
+{##}
+{#    </tr>#}
+</table>
+</form>
+</body>
+{% endblock %}

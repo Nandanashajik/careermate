@@ -1,0 +1,355 @@
+{#{% extends 'Guide/guideindex.html' %}#}
+{#{% block body %}#}
+{##}
+{#<body><form action="/myapp/register_post/" method="post" enctype="multipart/form-data">#}
+{#    {% csrf_token %}#}
+{#<table class="table table-bordered" border="1">#}
+{#  <tr>#}
+{#    <th>Name</th>#}
+{#    <td>#}
+{#      <input type="text" name="textfield" id="textfield" required /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th>Photo</th>#}
+{#    <td>#}
+{#      <input type="file" name="textfield2" id="textfield2" required/></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th>Email</th>#}
+{#    <td>#}
+{#      <input type="text" name="textfield3" id="textfield3" required /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th>Phone</th>#}
+{#    <td>#}
+{#      <input type="text" name="textfield4" id="textfield4" required/></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#      <th>Place</th>#}
+{#  <td>#}
+{#    <input type="text" name="textfield10" id="textfield10" required/>#}
+{#  <tr>#}
+{#    <th>Pin</th>#}
+{#    <td>#}
+{#      <input type="text" name="textfield5" id="textfield5" required/></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th>Post</th>#}
+{#    <td>#}
+{#      <input type="text" name="textfield6" id="textfield6" required/></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th>District</th>#}
+{#    <td>#}
+{#      <input type="text" name="textfield7" id="textfield7" required/></td>#}
+{#  </tr>#}
+{##}
+{#  <tr>#}
+{#    <th>Password</th>#}
+{#    <td>#}
+{#      <input type="text" name="textfield8" id="textfield8" required/></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th>Confirm Password</th>#}
+{#    <td>#}
+{#      <input type="text" name="textfield9" id="textfield9"  required/></td>#}
+{#  </tr>#}
+{#</table>#}
+{#<table width="200" border="1">#}
+{#  <tr>#}
+{#    <th><input type="submit" name="submit" id="submit" value="Submit" class="btn btn-primary"/></th>#}
+{#  </tr>#}
+{#</table>#}
+{#</form>#}
+{#</body>#}
+{#{% endblock %}#}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 50%;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    table {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    input[type="text"], input[type="file"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    .error {
+        color: red;
+        font-size: 12px;
+    }
+    .password-container {
+        position: relative;
+}
+
+    .password-container input {
+      width: 95%;
+      padding-right: 30px; /* Ensure space for the icon */
+}
+
+    .password-container i.toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 10px; /* Align the icon to the right */
+      transform: translateY(-50%); /* Vertically center the icon */
+      cursor: pointer;
+}
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Mentor Register</h2>
+  <form action="/myapp/register_post/" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+    {% csrf_token %}
+    <table class="table table-bordered">
+      <tr>
+        <th>Name</th>
+        <td>
+          <input type="text" name="name" id="name" required />
+          <span id="name-error" class="error"></span>
+        </td>
+      </tr>
+      <tr>
+        <th>Photo</th>
+        <td>
+          <input type="file" name="photo" id="photo" required />
+          <span id="photo-error" class="error"></span>
+        </td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" name="email" id="email" required />
+          <span id="email-error" class="error"></span>
+        </td>
+      </tr>
+      <tr>
+        <th>Phone</th>
+        <td>
+          <input type="text" name="phone" id="phone" required />
+          <span id="phone-error" class="error"></span>
+        </td>
+      </tr>
+      <tr>
+        <th>Place</th>
+        <td>
+          <input type="text" name="place" id="place" required />
+          <span id="place-error" class="error"></span>
+        </td>
+      </tr>
+      <tr>
+        <th>Pin</th>
+        <td>
+          <input type="text" name="pin" id="pin" required />
+          <span id="pin-error" class="error"></span>
+        </td>
+      </tr>
+      <tr>
+        <th>Post</th>
+        <td>
+          <input type="text" name="post" id="post" required />
+          <span id="post-error" class="error"></span>
+        </td>
+      </tr>
+      <tr>
+        <th>District</th>
+        <td>
+          <input type="text" name="district" id="district" required />
+          <span id="district-error" class="error"></span>
+        </td>
+      </tr><tr>
+        <th>Work place</th>
+        <td>
+          <input type="text" name="workplace" id="workplace" required />
+          <span id="workplace-error" class="error"></span>
+        </td>
+      </tr><tr>
+        <th>Qualification</th>
+        <td>
+          <input type="text" name="qualification" id="qualification" required />
+          <span id="qualification-error" class="error"></span>
+        </td>
+      </tr><tr>
+        <th>Certificate</th>
+        <td>
+          <input type="file" name="certificate" id="certificate" required />
+          <span id="certificate-error" class="error"></span>
+        </td>
+      </tr>
+{#      <tr>#}
+{#        <th>Password</th>#}
+{#        <td>#}
+{#          <input type="password" name="password" id="password" required /><i class="toggle-password fas fa-eye-slash" id="togglePassword2" onclick="togglePasswordVisibility('password', 'togglePassword2')"  ></i>#}
+{#          <span id="password-error" class="error"></span>#}
+{#        </td>#}
+{#      </tr>#}
+{#      <tr>#}
+{#        <th>Confirm Password</th>#}
+{#        <td>#}
+{#          <input type="password" name="confirm-password" id="confirm-password" required /><i class="toggle-password fas fa-eye" id="togglePassword3" onclick="togglePasswordVisibility('confirm_password', 'togglePassword3')" ></i>#}
+{#          <span id="confirm-password-error" class="error"></span>#}
+{#        </td>#}
+{#      </tr>#}
+         <tr>
+  <th>Password</th>
+  <td>
+    <div class="password-container">
+      <input type="password" name="password" id="password" required />
+      <i class="toggle-password fas fa-eye-slash" id="togglePassword2" onclick="togglePasswordVisibility('password', 'togglePassword2')"></i>
+    </div>
+    <span id="password-error" class="error"></span>
+  </td>
+</tr>
+
+<!-- Confirm Password -->
+<tr>
+  <th>Confirm Password</th>
+  <td>
+    <div class="password-container">
+      <input type="password" name="confirm_password" id="confirm_password" required />
+      <i class="toggle-password fas fa-eye" id="togglePassword3" onclick="togglePasswordVisibility('confirm_password', 'togglePassword3')"></i>
+    </div>
+    <span id="confirm_password-error" class="error"></span>
+  </td>
+</tr>
+    </table>
+    <input type="submit" value="Submit" />
+  </form>
+</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<script>
+function togglePasswordVisibility(inputId, iconId) {
+    var input = document.getElementById(inputId);
+    var icon = document.getElementById(iconId);
+
+    if (input.type === "password") {
+      input.type = "text";
+      icon.classList.add("fa-eye");
+      icon.classList.remove("fa-eye-slash");
+    } else {
+      input.type = "password";
+      icon.classList.add("fa-eye-slash");
+      icon.classList.remove("fa-eye");
+    }
+  }
+
+  function validateForm() {
+    let valid = true;
+
+    // Reset error messages
+    document.querySelectorAll('.error').forEach(function(element) {
+      element.innerHTML = '';
+    });
+
+    // Name validation
+    let name = document.getElementById("name").value;
+    if (name === "") {
+      document.getElementById("name-error").innerText = "Name is required.";
+      valid = false;
+    }
+
+    // Email validation
+    let email = document.getElementById("email").value;
+    let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!email.match(emailPattern)) {
+      document.getElementById("email-error").innerText = "Please enter a valid email.";
+      valid = false;
+    }
+
+    // Phone validation
+    let phone = document.getElementById("phone").value;
+    let phonePattern = /^[0-9]{10}$/;
+    if (!phone.match(phonePattern)) {
+      document.getElementById("phone-error").innerText = "Please enter a valid 10-digit phone number.";
+      valid = false;
+    }
+
+    // Password and Confirm Password validation
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirm-password").value;
+    if (password !== confirmPassword) {
+      document.getElementById("confirm-password-error").innerText = "Passwords do not match.";
+      valid = false;
+    }
+
+    // Check if the photo is selected
+    let photo = document.getElementById("photo").value;
+    if (!photo) {
+      document.getElementById("photo-error").innerText = "Please upload a photo.";
+      valid = false;
+    }
+
+    let workplace = document.getElementById("workplace").value;
+    if (!workplace) {
+      document.getElementById("workplace-error").innerText = "Please type workspace.";
+      valid = false;
+    }
+
+    let qualification = document.getElementById("qualification").value;
+    if (!qualification) {
+      document.getElementById("qualification-error").innerText = "Please add qualification.";
+      valid = false;
+    }
+
+    let certificate = document.getElementById("certificate").value;
+    if (!certificate) {
+      document.getElementById("certificate-error").innerText = "Please input certificate.";
+      valid = false;
+    }
+
+    return valid;
+  }
+</script>
+
+</body>
+</html>

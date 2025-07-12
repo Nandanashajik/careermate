@@ -1,0 +1,43 @@
+{% extends 'company/companyindex.html' %}
+{% block body %}
+
+<body><form action="/myapp/viewrequest_qualification_post/" method="post">
+    {% csrf_token %}
+<table class="table table-bordered" border="1">
+  <tr>
+    <th>from</th>
+    <td>
+      <input type="date" name="textfield" id="textfield" required /></td>
+    <th>To</th>
+    <td>
+      <input type="date" name="textfield2" id="textfield2" required/></td>
+    <td><input type="submit" name="search" id="search" value="Search" class="btn btn-primary"/></td>
+  </tr>
+</table>
+<table class="table table-bordered" border="1">
+  <tr>
+      <th>Sl No&nbsp;</th>
+      <th>Date</th>
+    <th>Job</th>
+    <th>User</th>
+    <th>CV</th>
+    <th>&nbsp;</th>
+  </tr>
+    {% for i in data  %}
+
+
+
+  <tr>
+    <td>{{ forloop.counter }}&nbsp;</td>
+    <td>{{ i.date }}&nbsp;</td>
+    <td>&nbsp;{{ i.VACANCY.JOB }}</td>
+      <td>{{ i.USER.name }}</td>
+      <td><a href="{{ i.CV }}">View</a></td>
+    <td><a href="/myapp/c_acceptrequest_get/{{ i.id }}" class="btn btn-success">Accept</a></td>
+    <td><a href="/myapp/c_rejectrequest_get/{{ i.id }}" class="btn btn-danger">Reject</a></td>
+  </tr>
+    {% endfor %}
+</table>
+</form>
+</body>
+{% endblock %}

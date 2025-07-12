@@ -1,0 +1,43 @@
+{% extends 'User/userindex.html' %}
+{% block body %}
+
+<body>
+<form action="/myapp/sendrequest_post/" method="post">
+<table class="table table-bordered" border="1">
+    <tr>
+    <td>
+      <input type="text" name="textfield" id="textfield" /></td>
+    <td><input type="submit" name="search" id="search" value="Search" class="btn btn-primary"/></td>
+  </tr>
+</table>
+<table class="table table-bordered" border="1">
+  <tr>
+    <th>Sl No</th>
+    <th>Name</th>
+    <th>Contact</th>
+    <th>Photo</th>
+    <th>Address</th>
+    <th>Work Place</th>
+    <th>Qualification</th>
+    <th>Experience Certificate</th>
+    <th>&nbsp;</th>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.name }}</td>
+    <td>&nbsp;{{ i.phone }}<br>{{ i.email }}</td>
+    <td><img src="{{ i.photo }}" height="100" width="100"></td>
+    <td>{{ i.place }}<br>{{ i.pin }}<br>{{ i.post }}<br>{{ i.district }}</td>
+      <td>{{ i.workplace }}</td>
+      <td>{{ i.qualification }}</td>
+      <td><a href="{{ i.certificate }}">Certificate</a> </td>
+    <td><a href="/myapp/sendrequest_post/{{ i.id }}" class="btn btn-primary">Request</a>
+</td>
+  </tr>
+    {% endfor %}
+</table>
+
+</form>
+</body>
+{%  endblock %}

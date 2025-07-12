@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <title>Career Mate</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/login/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="/static/login/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/login/css/bootstrap.min.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="/static/login/css/style.css">
+
+    <title>Login #7</title>
+      <style>
+          .password-container i.toggle-password {
+          position: absolute;
+          top: 50%;
+          right: 10px; /* Align the icon to the right */
+          transform: translateY(-50%); /* Vertically center the icon */
+          cursor: pointer;
+}
+      </style>
+  </head>
+  <body>
+  
+
+  
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="/static/login/images/undraw_remotely_2j6y.svg" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="mb-4">
+              <h3>Sign In</h3>
+{#              <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>#}
+            </div>
+            <form action="/myapp/Login_post/" method="post">
+                {% csrf_token %}
+              <div class="form-group first">
+                <label for="username">Username</label>
+                <input type="text" name="textfield" class="form-control" id="username">
+
+              </div>
+              <div class="form-group last mb-4">
+                <label for="password">Password</label>
+                <input type="password" name="textfield2" class="form-control" id="password">
+                  <div class="password-container">
+      <i class="toggle-password fas fa-eye-slash" id="togglePassword2" onclick="togglePasswordVisibility('password', 'togglePassword2')"></i>
+    </div>
+    <span id="password-error" class="error"></span>
+
+
+              </div>
+              
+{#              <div class="d-flex mb-5 align-items-center">#}
+{#                <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>#}
+{#                  <input type="checkbox" checked="checked"/>#}
+{#                  <div class="control__indicator"></div>#}
+{#                </label>#}
+{#                <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> #}
+{#              </div>#}
+
+              <input type="submit" value="Log In" class="btn btn-block btn-primary">
+
+{#              <span class="d-block text-left my-4 text-muted">&mdash; Sign up &mdash;</span>#}
+              <br>
+
+              <div>
+                <a href="/myapp/c_register_get/" class="">Company Signup</a>
+              </div>
+                <br>
+
+              <div>
+                <a href="/myapp/register_get/" class="">Mentor Signup</a>
+              </div>
+                <br>
+
+              <div>
+                <a href="/myapp/userregister_get/" class="">Job Aspirants Signup</a>
+              </div>
+
+
+            </form>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script>
+    function togglePasswordVisibility(inputId, iconId) {
+    var input = document.getElementById(inputId);
+    var icon = document.getElementById(iconId);
+
+    if (input.type === "password") {
+      input.type = "text";
+      icon.classList.add("fa-eye");
+      icon.classList.remove("fa-eye-slash");
+    } else {
+      input.type = "password";
+      icon.classList.add("fa-eye-slash");
+      icon.classList.remove("fa-eye");
+    }
+  }
+
+</script>
+
+  
+    <script src="/static/login/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/login/js/popper.min.js"></script>
+    <script src="/static/login/js/bootstrap.min.js"></script>
+    <script src="/static/login/js/main.js"></script>
+  </body>
+</html>

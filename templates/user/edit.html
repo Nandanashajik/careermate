@@ -1,0 +1,60 @@
+{% extends 'User/userindex.html' %}
+{% block body %}
+
+<body><form action="/myapp/u_edit_post/" method="post" enctype="multipart/form-data">
+    {%  csrf_token %}
+
+<table class="table table-bordered" border="1">
+    <tr>
+    <th>Name</th>
+    <td>
+      <input type="text" name="textfield" id="textfield" value="{{ data.name }}"/></td>
+  </tr>
+  <tr>
+    <th>Photo</th>
+    <td><img src="{{ data.photo }}" width="90" height="90">
+      <input type="file" name="textfield2" id="textfield2" /></td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td>
+      <input type="text" name="textfield3" id="textfield3" value="{{ data.email }}"/></td>
+  </tr>
+  <tr>
+    <th>Phone</th>
+    <td>
+      <input type="text" name="textfield4" id="textfield4" value="{{ data.phone }}"/></td>
+  </tr>
+  <tr>
+      <th>Place</th>>
+  <td>
+    <input type="text" name="textfield10" id="textfield10" value="{{ data.place }}"/>
+  <tr>
+    <th>Pin</th>
+    <td>
+      <input type="text" name="textfield5" id="textfield5" value="{{ data.pin }}"/></td>
+  </tr>
+  <tr>
+    <th>Post</th>
+    <td>
+      <input type="text" name="textfield6" id="textfield6" value="{{ data.post }}"/></td>
+  </tr>
+  <tr>
+    <th>District</th>
+    <td>
+      <input type="text" name="textfield7" id="textfield7" value="{{ data.district }}"/></td>
+  </tr>
+  <tr>
+  <th>State</th>
+   <td>
+     <input type="text" name="textfield11" id="textfield11" value="{{ data.state }}"/></td>
+  
+  </tr>
+</table>
+<table width="200" border="1">
+  <tr>
+    <td><input type="submit" name="submit" id="submit" value="Submit" class="btn btn-primary"/></td>
+  </tr>
+</table></form>
+</body>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'company/companyindex.html' %}
+{% block body %}
+
+<body><form action="/myapp/c_viewprofile_get/" method="post">
+    {% csrf_token %}
+<table class="table table-bordered" border="1">
+  <tr>
+    <th>Name</th>
+    <td>
+    {{ data.companyname }}
+    </td>
+  <tr>
+    <th>Liscence No</th>
+    <td>
+        {{ data.liscenceno }}
+    </td>
+  </tr>
+  <tr>
+    <th>Contact</th>
+    <td>
+        {{ data.phoneno }},{{ data.email }}
+    </td>
+  </tr>
+  <tr>
+    <th>Address</th>
+
+        <td>{{ data.place }},{{ data.pin }},{{ data.post }},{{ data.district }},{{ data.state }}</td>
+  </tr>
+    <tr>
+        <th>Photo</th>
+        <td>
+<img src="{{ data.photo }}" width="100" height="100">
+        </td>
+    </tr>
+    <tr>
+
+    <td>
+      <a href="/myapp/c_edit_get/{{ i.id }}" class="btn btn-primary">EDIT</a></td>
+  </tr>
+</table></form>
+</body>
+{% endblock %}

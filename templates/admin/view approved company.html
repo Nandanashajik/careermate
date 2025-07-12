@@ -1,0 +1,38 @@
+{% extends 'admin/adminindex.html' %}
+{% block body %}
+
+<body>
+<form action="/myapp/viewApprovedCompany_post/" method="post">
+    {% csrf_token %}
+<table class=" table table-bordered" border="1">
+  <tr>
+    <td>
+      <input type="text" name="textfield" id="textfield2" required /></td>
+    <td><input type="submit" name="search" id="search" value="Search"  class="btn btn-primary" /></td>
+  </tr>
+</table>
+<table class=" table table-bordered" border="1">
+  {% for i in data %}
+
+    <tr>
+    <th>Sl No</th>
+    <th>Company Name</th>
+    <th>Liscence No</th>
+    <th>Photo</th>
+    <th>Contact</th>
+    <th>Address</th>
+  </tr>
+  <tr>
+    <td>{{ forloop.counter }}&nbsp;</td>
+    <td>{{ i.companyname }}&nbsp;</td>
+    <td>{{ i.liscenceno }}&nbsp;</td>
+    <td><img src="{{ i.photo }}" height="=100" width="100"> &nbsp;</td>
+    <td>{{ i.phoneno }}<br>{{ i.email }}&nbsp;</td>
+    <td>{{ i.place }}<br>{{ i.pin }}<br>{{ i.post }}<br>{{ i.district }}<br>{{ i.state }}&nbsp;</td>
+  </tr>
+    {% endfor %}
+</table>
+
+</form>
+</body>
+{% endblock %}

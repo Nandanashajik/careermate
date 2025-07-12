@@ -1,0 +1,58 @@
+{% extends 'User/userindex.html' %}
+{% block body %}
+
+<body>
+<form action="/myapp/u_viewApprovedGuide_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+<table class="table table-bordered" border="1">
+  <tr>
+    <td>
+      <input type="text" name="textfield" id="textfield" /></td>
+    <td><input type="submit" name="search" id="search" value="Search" class="btn btn-primary" /></td>
+  </tr>
+</table>
+
+<table class="table table-bordered" border="1" >
+ 
+  <tr>
+    <th>Sl No</th>
+    <th>Name</th>
+    <th>Contact</th>
+    <th>Photo</th>
+    <th>Address</th>
+    <th>Work Place</th>
+    <th>Qualification</th>
+    <th>Experience Certificate</th>
+    <th>&nbsp;</th>
+
+  </tr>
+    {% for i in data %}
+
+
+  <tr>
+    <td>{{ forloop.counter }}&nbsp;</td>
+    <td>{{ i.GUIDE.name }}&nbsp;</td>
+    <td>{{ i.GUIDE.phoneno }}<br>{{ i.GUIDE.email }}&nbsp;</td>
+    <td><img src="{{ i.GUIDE.photo }}" height="=100" width="100"> &nbsp;</td>
+    <td>&nbsp;{{ i.GUIDE.place }}<br>{{ i.GUIDE.pin }}<br>{{ i.GUIDE.post }}<br>{{ i.GUIDE.district }}</td>
+    <td>{{ i.GUIDE.workplace }}</td>
+    <td>{{ i.GUIDE.qualification }}</td>
+    <td><a href="{{ i.GUIDE.certificate }}">Certificate</a></td>
+      <td>
+
+        {% if i.status == 'approved' %}
+                     <a href="/myapp/chat2/{{ i.GUIDE.LOGIN.id }}" class="btn btn-primary">Chat</a>
+
+
+        {% else %}
+{{ i.status }}
+        {% endif %}
+    </td>
+  </tr>
+    {% endfor %}
+
+</table>
+</form>
+</body>
+{% endblock %}

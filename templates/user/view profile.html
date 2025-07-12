@@ -1,0 +1,31 @@
+{% extends 'User/userindex.html' %}
+{% block body %}
+
+<body><form action="" method="post" enctype="multipart/form-data">
+<table class="table table-bordered" border="1">
+  <tr>
+    <th>Name</th>
+    <td>{{ data.name }}</td>
+  </tr>
+  <tr>
+    <th>Photo</th>
+    <td><img src="{{ data.photo }}" height="50px" width="50px"></td>
+  </tr>
+  <tr>
+    <th>Contact</th>
+    <td>{{ data.phone }}<br>{{ data.email }}</td>
+  </tr>
+  <tr>
+    <th>Address</th>
+    <td>{{ data.place }}<br>{{ data.pin }}<br>{{ data.post }}<br>{{ data.district }}<br>{{ data.state }}</td>
+  </tr>
+    <tr>
+        <td>
+        </td>
+        <td><a href="/myapp/u_edit_get/" class="btn btn-primary">EDIT PROFILE</a></td>
+    </tr>
+</table>
+
+</form>
+</body>
+{% endblock %}
